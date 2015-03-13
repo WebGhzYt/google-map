@@ -1,2 +1,28 @@
-<h1>Companies#new</h1>
-<p>Find me in app/views/companies/new.html.erb</p>
+<script>  
+  $(document).ready(function(){
+    // gmap_form();    // form map for new view (print nothing with possibility of put marker)
+    var company = <%= raw @company.to_json %>;  
+	gmap_form(company);
+  });
+
+ //  $( "#form_submit_action" ).submit(function( event ) {
+ // 	alert( "Handler for .submit() called." );
+	// event.preventDefault();
+ //  });
+
+</script>
+
+
+<h1>Create company</h1>
+
+<%= form_for @company do |f| %>
+  <%= f.label :name, 'company' %>
+  <%= f.text_field :name %>
+  
+  <%= f.hidden_field :lat, id: 'map_lat' %>
+  <%= f.hidden_field :lng, id: 'map_lng' %>
+  <%= f.submit 'CREATE' %>
+<% end %>
+<div id="map" style="width: 550px; height: 350px;"></div>
+
+

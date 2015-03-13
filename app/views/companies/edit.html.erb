@@ -1,2 +1,16 @@
-<h1>Companies#edit</h1>
-<p>Find me in app/views/companies/edit.html.erb</p>
+<script>  
+  $(document).ready(function(){
+    var company = #{@company.to_json}
+    gmap_form(company);    // form map for edit view (print marker and possibility of put newer)
+  });
+</script>
+
+<h1>Edit company</h1>
+<%= form_for @company do |f| %>
+  <%= f.label :name, 'Company name' %>
+  <%= f.text_field :name %>
+  <div id="map" style="width: 550px; height: 350px;"></div>
+  <%= f.hidden_field :lat, id: 'map_lat' %>
+  <%= f.hidden_field :lng, id: 'map_lng' %>
+  <%= f.submit 'UPDATE' %>
+<% end %>
