@@ -1,0 +1,33 @@
+<script>
+
+
+  $(document).ready(function(){
+    var company = <%= raw @company_map.to_json %>;  
+    gmap_show(company);
+
+  });
+</script>
+
+
+
+<table>
+	<% if !@companys.any?  %>
+ 		No any company
+ 	<% else %>
+
+		<% @companys.each do |company| %>
+        
+	      <tr>
+	        <td><%= link_to company.name , company_path(company.id) %></td>
+	        <td><%= company.lat %></td>
+	        <td><%= company.lng %></td>
+	      </tr>
+	 	<% end %>
+	<% end %>	 
+</table>
+
+
+
+<div style='width: 800px;'>Company Map
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>

@@ -1,0 +1,26 @@
+<script>
+
+
+	$(document).ready(function(){
+		var company = <%= raw @company.to_json %>;  
+		gmap_show(company);
+
+	});
+</script>
+
+
+
+
+ 
+
+<%= @company.id %>
+<%= @company.name %>
+<%= @company.lat %>
+<%= @company.lng %>
+
+
+
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
